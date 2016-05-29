@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM笔记</title>
+    <style>
+        dl{
+            margin-bottom: 10px;
+        }
+        dt,dd{
+            height: 36px;
+            line-height: 36px;
+        }
+        dt{
+            background: #90bcc4;
+            color: #fff;
+            text-indent: 1em;
+        }
+        dd{
+            border: 1px solid #ddd;
+            border-bottom: none;
+            margin: 0;
+            padding-left: 20px;
+        }
+        dd:nth-child(2n){
+            background: #f9f9f9;
+        }
+        dd:first-child{
+            border-top: none;
+        }
+        dd:last-child{
+            border-bottom: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <dl>
+        <dt>slideDoor笔记</dt>
+        <dd>1、offsetWidth获得元素的宽度</dd>
+        <dd>2、立即调用函数 (function(i){...})(i)，for循环绑定事件</dd>
+        <dd>3、style.left样式设置</dd>
+        <dd>4、window.onload页面元素加载完以后加载</dd>
+        <dd>5、parseInt(string,10)转换成10进制的数字</dd>
+    </dl>
+
+    <dl>
+        <dt>nodeType笔记</dt>
+        <dd>1、元素节点E：1/DIV/null</dd>
+        <dd>2、属性节点A：2/id/container</dd>
+        <dd>3、文本节点T：3/#text/这是一个元素节点</dd>
+        <dd>4、注释节点C：8/#comment/ 这是一行注释！</dd>
+        <dd>5、空白换行文本节点T：3/#text/ </dd>
+        <dd>6、文档document节点D：10/html/null</dd>
+        <dd>7、代码片段节点F：11/#document-fragment/null</dd>
+    </dl>
+
+    <dl>
+        <dt>domReady笔记</dt>
+        <dd>1、document.addEventListener判断是否IE浏览器，false IE</dd>
+        <dd>2、DOMContentLoaded 事件，DOM加载后的事件</dd>
+        <dd>3、onreadystatechange IE下DOM加载状态</dd>
+        <dd>4、window.docuemnt.readyState IE下DOM记载完成</dd>
+        <dd>5、window.docuemnt.documentElement.doScroll('left') DOM树未记载会抛出异常</dd>
+        <dd>6、arguments.callee 调用自身函数</dd>
+    </dl>
+</body>
+</html>

@@ -1,0 +1,25 @@
+#container{
+    height: 360px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+}
+#container li{
+    height: 360px;
+    width: 380px;
+    position: absolute;
+    top: 1px;
+    left: 0;
+}
+#container li:nth-child(1){
+    background: #48a7c4;
+}
+#container li:nth-child(2){
+    background: #94c4a5;
+}
+#container li:nth-child(3){
+    background: #c4b26e;
+}
+#container li:nth-child(4){
+    background: #c46c7a;
+}

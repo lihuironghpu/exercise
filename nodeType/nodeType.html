@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>节点类型</title>
+</head>
+<body>
+    <!-- 这是一行注释！-->
+    <div id="container">这是一个元素节点</div>
+    <script>
+        var divEle = document.getElementById("container");
+//        IE浏览器不支持Node.ELEMENT_NODE
+//        if(divEle.nodeType == 1){
+//            alert(divEle.nodeType+" "+Node.ELEMENT_NODE+" "+divEle.nodeName);
+//        }
+        console.log("元素节点E：" + divEle.nodeType + "/" + divEle.nodeName + "/" + divEle.nodeValue);
+
+        var attrNode = divEle.attributes[0];
+        console.log("属性节点A：" + attrNode.nodeType + "/" + attrNode.nodeName + "/" + attrNode.nodeValue);
+
+        var textNode = divEle.childNodes[0];
+        console.log("文本节点T：" + textNode.nodeType + "/" + textNode.nodeName + "/" + textNode.nodeValue);
+
+        var commetNode = document.body.childNodes[1];
+        console.log("注释节点C：" + commetNode.nodeType + "/" + commetNode.nodeName + "/" + commetNode.nodeValue);
+
+        var blankNode = document.body.childNodes[0];
+        console.log("空白换行文本节点T：" + blankNode.nodeType + "/" + blankNode.nodeName + "/" + blankNode.nodeValue);
+
+        console.log("文档document节点D：" + document.doctype.nodeType + "/" + document.doctype.nodeName + "/" + document.doctype.nodeValue);
+
+        var flag = document.createDocumentFragment();
+        console.log("代码片段节点F：" + flag.nodeType + "/" + flag.nodeName + "/" + flag.nodeValue);
+    </script>
+</body>
+</html>
