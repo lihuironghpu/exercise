@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>元素节点类型判定</title>
+</head>
+<body>
+    <h1 id="header">这是一个标题</h1>
+
+    <div id="contanier">
+        <div id="content">我是内容</div>
+    </div>
+    <script>
+        var headEle = document.getElementById("header");
+        var node2 = {
+            nodeType: 1
+        };
+//        function isElement(nodeEle){
+//            if(nodeEle.nodeType == 1){
+//                return true;
+//            }
+//            return false;
+//        }
+//        判断一个节点是否是元素节点
+        function isElement(nodeEle){
+            if(nodeEle){
+                if(nodeEle.nodeType !==1){
+                    return false;
+                }else{
+                    var pEle=document.createElement("p");
+                    try{
+    //                    非元素节点添加子节点会抛出异常
+                        nodeEle.appendChild(pEle);
+                        return true;
+                    }catch(e){
+                        return false;
+                    }
+                }
+            }
+            return false;
+        }
+//        console.log(isElement(headEle));
+//        console.log(isElement(node2));
+
+
+//        判断节点关系
+        var pnode=document.getElementById("contanier");
+        var cnode=document.getElementById("content");
+//        console.log(pnode.contains(cnode));
+
+//        IE6docuemnt的containers会报错
+//        console.log(document.contains(cnode));
+
+//        自定义的contains
+        function fixContains(par,chil){
+            try{
+//                遍历到document后，调用parentNode会抛出异常
+                while((chil = chil.parentNode)){
+                    if(par == chil){
+                        return true;
+                    }
+                }
+                return false;
+            }catch(e){
+                return false;
+            }
+        }
+        console.log(fixContains(document, cnode));
+        console.log(Object.getOwnPropertyNames(pnode.__proto__.__proto__));
+    </script>
+</body>
+</html>

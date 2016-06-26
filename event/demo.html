@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="container">
+        <input type="button" value="按钮"/>
+        <a href="../note.html">笔记</a>
+    </div>
+    <script src="js/eventUtil.js"></script>
+    <script>
+        var boxEle = document.getElementById("container");
+        var inputELe = document.getElementsByTagName("input")[0];
+        var aEle = document.getElementsByTagName("a")[0];
+//        inputELe.onclick = function(event){
+//            alert("我点击了按钮");
+////            阻止事件冒泡
+//            event.stopPropagation();
+//        }
+//        document.onclick = function(){
+//            alert("点击了document");
+//        }
+
+
+        function showalert(e){
+            e=window.event || event;
+            var ele = e.target || e.srcElement;
+            alert(e.type+" "+ ele+" "+ e.nodeName);
+            e.stopPropagation();//阻止事件冒泡
+            e.preventDefault();//阻止默认行为
+        }
+        function showbox(e){
+            alert("我是一个盒子！");
+        }
+
+        eventUtil.addEvent(inputELe, 'click', showalert);
+        eventUtil.addEvent(boxEle, 'click', showbox);
+        eventUtil.addEvent(aEle, 'click', showalert);
+
+
+    </script>
+</body>
+</html>

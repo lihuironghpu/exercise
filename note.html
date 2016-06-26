@@ -63,5 +63,15 @@
         <dd>5、window.docuemnt.documentElement.doScroll('left') DOM树未记载会抛出异常</dd>
         <dd>6、arguments.callee 调用自身函数</dd>
     </dl>
+
+    <dl>
+        <dt>eventUtil笔记</dt>
+        <dd>1、DOM中添加事件addEventListener("click",fn,false) 事件不带on，false表示冒泡，true表示捕获</dd>
+        <dd>2、IE中添加事件attachEvent("onclick",fn) 事件带上on</dd>
+        <dd>3、DOM中事件冒泡 stopPropagation() IE中是cancelBubble = true</dd>
+        <dd>4、DOM中阻止默认行为 preventDefault() IE中是returnValue = false</dd>
+        <dd>5、DOM中事件元素 event.target IE中 event.srcElement</dd>
+        <dd>6、事件 event || window.event</dd>
+    </dl>
 </body>
 </html>
