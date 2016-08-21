@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title></title>
+    <style>
+        body{
+            margin: 0;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        .slideBox{
+            overflow: hidden;
+        }
+        .slideBox ul{
+            width: 500%;
+            overflow: hidden;
+            height: 300px;
+        }
+        .slideBox ul li{
+            width: 20%;
+            height: 300px;
+            line-height: 300px;
+            text-align: center;
+            font-size: 40px;
+            float: left;
+        }
+        .slideBox ul li:nth-child(2n){
+            background: #90bcc4;
+        }
+    </style>
+</head>
+<body>
+    <div class="slideBox">
+        <ul style="-webkit-transform: translateX(0);">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+<script>
+    var slideUl = document.querySelector(".slideBox ul");
+    var startx,endx,startTransX,offsetX,screenWidth,boxWidth,maxTransX;
+    screenWidth = window.screen.availWidth;
+    boxWidth = document.querySelector(".slideBox ul").clientWidth;
+    maxTransX = boxWidth-screenWidth;
+    slideUl.ontouchstart = function(event){
+        var e = event ? event : window.event;
+        startx = e.touches[0].pageX;
+        startTransX = parseFloat(document.querySelector(".slideBox ul").style.webkitTransform.split("(")[1]);
+    };
+    slideUl.ontouchmove = function(event){
+        var e = event ? event :window.event;
+        offsetX = e.touches[0].pageX - startx;
+        console.log(offsetX);
+        if((startTransX + offsetX) >= 0){
+            document.querySelector(".slideBox ul").style.webkitTransform = "translateX(0)";
+        }else if((startTransX + offsetX) <= (maxTransX * -1)){
+            document.querySelector(".slideBox ul").style.webkitTransform = "translateX(" + (maxTransX * -1) + ")";
+        }else{
+            document.querySelector(".slideBox ul").style.webkitTransform = "translateX("+(startTransX + offsetX)+"px)";
+        }
+    }
+    slideUl.ontouchend = function(event){
+        var e = event ? event : window.event;
+        endx = e.touches[0].x;
+        if(offsetX > 100){
+//           跳转到上一个
+        }else if(offsetX < -100){
+//           跳转到下一个
+        }else{
+//           返回原来图片
+        }
+    };
+
+</script>
+</body>
+</html>

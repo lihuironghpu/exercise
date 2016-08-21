@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>作用域</title>
+</head>
+<body>
+    <script>
+//        var aa = 1;//aa全局作用域
+//        function fn01(){
+//            console.log(bb);//undefined 变量声明提前
+//            var bb = 2;//bb局部作用域
+//            console.log(aa);//1
+//            console.log(bb);//2
+////            console.log(cc);//报错，未定义  ReferenceError: cc is not defined
+//            function fn02(){
+//                var cc = 3;
+//                console.log(aa);//1
+//                console.log(bb);//2
+//                console.log(cc);//3
+//            }
+//            fn02();
+//        }
+//        fn01();
+
+//        function fn(){
+//            var dd = 4;
+//            var func = new Function("console.log(dd)");
+//            func();//ReferenceError: dd is not defined
+//        }
+//        fn();
+
+
+
+        console.log(x);//function x(){};//函数声明被提前
+        var x = 10;
+        console.log(x);//10
+        x = 20;
+
+        function x(){}
+        console.log(x);//20
+
+        if(true){
+            var a = 1;
+        }else{
+            var b = 2;
+        }
+        console.log(a);//1
+        console.log(b);//undefined  变量声明被提前
+
+
+
+
+        console.log(y);//function y(){}
+        function y(){};
+        var y;
+        console.log(y);//function y(){}
+
+        console.log(y1);//function y1(){}
+        function y1(){};
+        var y1 = 10;
+        console.log(y1);//10
+
+
+        console.log(z);//function z(){}
+        var z;
+        function z(){};
+        console.log(z);//function z(){}
+    </script>
+</body>
+</html>

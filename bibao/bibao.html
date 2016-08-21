@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<dl>
+    <dt>闭包例子1:动态新增三个div，并绑定click事件</dt>
+    <dd id="box1"></dd>
+</dl>
+<script>
+    var box1 = document.getElementById("box1");
+    for(var i=0; i<3; i++){
+        var newdiv = document.createElement("div");
+        newdiv.innerHTML = "div00"+(i+1);
+        box1.appendChild(newdiv);
+    }
+    var divarr = box1.getElementsByTagName("div");
+    !function(){
+        var localData = "本地数据";
+        document.addEventListener('click',
+                function(){
+                    console.log(localData);
+                },false
+        )
+    }();
+//    动态绑定div
+    for(var j=0; j<3; j++){
+        !function(j){
+            divarr[j].addEventListener('click',
+                    function(){
+                        alert(j);
+                    },
+                false);
+        }(j);
+    }
+
+//    闭包－封装
+    (function(){
+        var _userId = "002291010";
+        var _typeId = "item";
+        var export1 = {};
+
+        function converter(userId){
+            return +userId;
+        }
+
+        export1.getUserId = function(){
+            return converter(_userId);
+        }
+
+        export1.getTypeId = function(){
+            return _typeId;
+        }
+
+        window.export1 = export1;
+
+    }())
+    console.log(export1.getTypeId());//item
+    console.log(export1.getUserId());//002291010
+
+    console.log(export1._userId);//局部变量不可访问
+    console.log(export1._typeId);//局部变量不可访问
+    console.log(export1.converter);//局部函数不可访问
+</script>
+</body>
+</html>

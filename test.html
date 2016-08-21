@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>测试文档</title>
+</head>
+<body>
+<input type="button" value="按钮"/>
+<script>
+    var btn = document.getElementsByTagName("input")[0];
+
+    btn.addEventListener('click',function(){console.log("我是事件捕获")},true);
+    btn.addEventListener('click',function(){console.log("我是事件冒泡")},false);
+
+</script>
+</body>
+</html>
